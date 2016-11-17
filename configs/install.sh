@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 # configure apache
 cp /home/pi/code/homeheating-remote /etc/apache2/sites-available
