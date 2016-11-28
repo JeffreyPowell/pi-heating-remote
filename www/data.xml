@@ -1,20 +1,35 @@
 <?php 
+w1dir = "/sys/bus/onewire/?/";
 header('Content-Type: application/xml');
 
-$filename = '/home/pi/pi-heating/config/sensors.ini';
+$aliasfile = '/home/pi/pi-heating/config/sensors.ini';
 
-if (file_exists($filename)) {
-    echo "The file $filename exists";
+if (file_exists($aliasfile)) {
+    echo "The file $aliasfile exists";
 } else {
-    echo "The file $filename does not exist";
+    echo "The file $aliasfile does not exist";
 }
 
-$aliases = [];
 
-$output = "";
-$output .= "<root>";
-$output .= "<sensor><id>sample_name</id><name>sample_name</name><value>sample_name</value></sensor>";
-$output .= "<sensor><id>sample_name</id><name>sample_name</name><value>sample_name</value></sensor>";
+$aliases = parse_ini_file($aliasfile);
+
+$sensors = scandir($w1dir);
+
+// Scan sensors
+
+$output = "<root>";
+
+foreach ($sensors as $sensor){
+    $raw_data = file_get_contents(w1dir.$sensor.'/?');
+    $value = $raw_data * 1.0;
+    $name = $aliases[$sensor];
+    if( $name == '' ) {
+        $name = $sensor;
+    }
+
+    $output .= "<sensor><id>".$sensor."</id><name>".$name."</name><value>".$value."</value></sensor>";
+}
+
 $output .= "</root>";
 print ($output);
 ?> 
