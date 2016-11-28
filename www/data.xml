@@ -1,5 +1,16 @@
 <?php 
 header('Content-Type: application/xml');
+
+$filename = '/home/pi/pi-heating/config/sensors.ini';
+
+if (file_exists($filename)) {
+    echo "The file $filename exists";
+} else {
+    echo "The file $filename does not exist";
+}
+
+$aliases = [];
+
 $output = "";
 $output .= "<root>";
 $output .= "<sensor><id>sample_name</id><name>sample_name</name><value>sample_name</value></sensor>";
