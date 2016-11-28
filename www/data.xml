@@ -1,0 +1,9 @@
+<?php 
+header('Content-Type: application/xml');
+$output = "";
+$output .= "<root>";
+$output .= "<sensor><id>sample_name</id><name>sample_name</name><value>sample_name</value></sensor>";
+$output .= "<sensor><id>sample_name</id><name>sample_name</name><value>sample_name</value></sensor>";
+$output .= "</root>";
+print ($output);
+?> 
