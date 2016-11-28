@@ -17,7 +17,8 @@ $sensors = scandir($w1dir);
 
 // Scan sensors
 
-$output = "<root>";
+$output = "<xml>";
+$output .= "<root>";
 
 foreach ($sensors as $sensor){
     $raw_data = file_get_contents(w1dir.$sensor.'/?');
