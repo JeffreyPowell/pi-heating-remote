@@ -1,12 +1,14 @@
 <?php
- 
+$SENSOR_ID = isset($_GET['id']) ? $_GET['id'] : '0';
+
 $w1dir = "/sys/bus/w1/devices/";
 $sensorfile = '/home/pi/pi-heating-remote/configs/sensors';
 //echo "<html><body><pre>";
-foreach( file($sensorfile) as $line ) {
-  $sensor = explode(" = ", $line );
-  $ref=$sensor[0];
-  $name=$sensor[1];
+$sensors = file($sensorfile, FILE_SKIP_EMPTY_LINES);
+
+$sensor = $sensors[$SENSOR_ID];
+$ref=$sensor[0];
+$name=$sensor[1];
   
   do {
       $raw_data = file_get_contents($w1dir.$ref.'/w1_slave');
