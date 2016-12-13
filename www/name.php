@@ -6,9 +6,7 @@ if ( $SENSOR_ID = 0 ) {
 
     print_r ( '' );
 
-  }
-    else
-  {
+  }else{
   
     $sensorfile = '/home/pi/pi-heating-remote/configs/sensors';
 
@@ -18,7 +16,7 @@ if ( $SENSOR_ID = 0 ) {
 
     $name=$sensor[1];
 
-    print_r ( $name);
+    print_r ( $name );
     
   }
   
