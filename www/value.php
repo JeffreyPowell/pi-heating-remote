@@ -18,6 +18,6 @@ $name=$sensor[1];
     
   $value = (float)substr( explode( "\n", $raw_data )[1], -5, 5 ) / 1000.0;
   echo "".$ref."=".$name."=".$value.",";
-}
+
 //echo "</pre></body></html>";
 ?>
