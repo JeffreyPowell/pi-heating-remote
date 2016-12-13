@@ -10,7 +10,7 @@ if ( $SENSOR_ID = 0 ) {
   
     $sensorfile = '/home/pi/pi-heating-remote/configs/sensors';
 
-    $sensors = file( $sensorfile );
+    $sensors = file( $sensorfile, FILE_SKIP_EMPTY_LINES );
 
     $sensor = explode( " = ", $sensors[$SENSOR_ID-1] );
 
