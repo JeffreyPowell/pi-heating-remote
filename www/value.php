@@ -6,7 +6,8 @@ $sensorfile = '/home/pi/pi-heating-remote/configs/sensors';
 //echo "<html><body><pre>";
 $sensors = file($sensorfile, FILE_SKIP_EMPTY_LINES);
 
-$sensor = $sensors[$SENSOR_ID];
+$sensor = explode( " = ", $sensors[$SENSOR_ID] );
+
 $ref=$sensor[0];
 $name=$sensor[1];
   
