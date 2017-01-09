@@ -26,9 +26,9 @@ if ( $SENSOR_ID < 1 ) {
       $success = substr( explode( "\n", $raw_data )[0], -3, 3 );
     } while ( $success !="YES" ); 
     
-    $value = (float)substr( explode( "\n", $raw_data )[1], -5, 5 ) / 1000.0;
-
-    print_r( $value );
+    $value = (float)substr( explode( "\n", $raw_data )[1], -5, 5 ) / 1000.0
+      
+    echo number_format($value, 1);
     
     }
 
