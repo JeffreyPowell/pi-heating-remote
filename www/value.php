@@ -25,12 +25,12 @@ if ( $SENSOR_ID < 1 ) {
       $raw_data = file_get_contents($w1dir.$ref.'/w1_slave');
       $success = substr( explode( "\n", $raw_data )[0], -3, 3 );
     } while ( $success !="YES" ); 
-    
-    $value = (float)substr( explode( "\n", $raw_data )[1], -5, 5 ) / 1000.0
+ 
+    $value = (float)(explode( "=", explode( " ", explode( "\n", $raw_data )[1] )[9] )[1])/1000.0;
       
-    echo number_format($value, 1);
-    
-    }
+    echo number_format( $value, 1 );
+
+  }
 
 ?>
 
